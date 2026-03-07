@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Analysis Tracker</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.plot.ly/plotly-3.0.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <header>
+    <h1>Health Analysis Tracker</h1>
+  </header>
+
+  <div id="error-banner"></div>
+
+  <section id="controls">
+    <div class="control-group">
+      <label>Date Range</label>
+      <div id="date-range-controls">
+        <div class="date-presets">
+          <button data-range="3m">3 months</button>
+          <button data-range="1y">1 year</button>
+          <button data-range="all" class="active">All time</button>
+        </div>
+        <div class="date-inputs">
+          <input type="date" id="date-from" aria-label="From date">
+          <span class="separator">&ndash;</span>
+          <input type="date" id="date-to" aria-label="To date">
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Indicators</label>
+      <div id="indicator-select" class="multi-select">
+        <input type="text" class="multi-select-input" placeholder="Search indicators..." aria-label="Search indicators">
+        <div class="multi-select-dropdown"></div>
+        <div class="multi-select-pills"></div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Aggregation</label>
+      <div class="btn-group" id="agg-controls">
+        <button data-agg="days">Days</button>
+        <button data-agg="weeks">Weeks</button>
+        <button data-agg="months">Months</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>View</label>
+      <div class="btn-group" id="mode-controls">
+        <button data-mode="normalized" class="active">Normalized</button>
+        <button data-mode="raw">Raw</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="chart-container">
+    <div id="chart"></div>
+    <div id="loading" class="empty-state">Loading DuckDB...</div>
+  </section>
+
+  <section id="table-container">
+    <div id="table-wrapper"></div>
+  </section>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

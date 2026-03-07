@@ -1,0 +1,6 @@
+from_unit,to_unit,factor
+µg/L,ng/mL,1
+ng/dL,pg/mL,10
+mIU/L,µIU/mL,1
+U/L,IU/L,1
+g/L,mg/dL,100

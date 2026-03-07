@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(rodney:*)",
+      "Bash(rodney js:*)"
+    ]
+  }
+}
