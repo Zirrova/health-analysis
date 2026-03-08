@@ -1,1 +1,219 @@
 date,indicator,value,units,laboratory_reference,laboratory
+2023-03-22,vldl,12.5,mg/dL,2 - 30,Synevo
+2023-03-22,calcium_ionized,1.26,mmol/L,1.12 - 1.32,Synevo
+2023-03-22,ast,17.3,U/L,15 - 32,Synevo
+2023-03-22,total_protein,6.41,g/dL,6.4 - 8.3,Synevo
+2023-03-22,total_bilirubin,0.265,mg/dL,< 1.2,Synevo
+2023-03-22,magnesium,1.9,mg/dL,1.6 - 2.6,Synevo
+2023-03-22,alp,54,U/L,< 104,Synevo
+2023-03-22,hdl_cholesterol,67.6,mg/dL,35 - 90,Synevo
+2023-03-22,glucose,88.3,mg/dL,74 - 106,Synevo
+2023-03-22,crp,0.124,mg/dL,< 0.5,Synevo
+2023-03-22,estradiol,164,pg/ml,Follicular phase: 12.4-233.0,Synevo
+2023-03-22,cortisol,18.4,µg/dL,Time-7-10am: 6.2-19.4,Synevo
+2023-03-22,ige,183,U/ml,< 100,Synevo
+2023-03-22,vitamin_b12,454,pg/ml,197 - 771,Synevo
+2023-03-22,folate,5.95,ng/ml,4.4 - 31,Synevo
+2023-03-22,tsh,2.86,µU/mL,0.27 - 4.2,Synevo
+2023-03-22,ferritin,14,ng/ml,15 - 150,Synevo
+2023-03-22,free_t4,0.891,ng/dl,0.9 - 1.7,Synevo
+2023-03-22,transferrin,296,mg/dL,200 - 360,Synevo
+2023-03-22,free_t3,0.31,ng/dl,0.26 - 0.44,Synevo
+2023-03-22,iron,81.7,µg/dL,37 - 145,Synevo
+2023-03-22,wbc,7.71,10^9/L,4.4 - 11.3,Synevo
+2023-03-22,anti_tg,11.9,IU/ml,< 115,Synevo
+2023-03-22,rbc,4.37,10^12/L,4.1 - 5.1,Synevo
+2023-03-22,hemoglobin,12.4,g/dL,11.7 - 16.2,Synevo
+2023-03-22,hematocrit,38.6,%,35 - 47,Synevo
+2023-03-22,mcv,88.3,fL,80 - 96,Synevo
+2023-03-22,mch,28.4,pg,28 - 33,Synevo
+2023-03-22,mchc,32.1,g/dL,33 - 36,Synevo
+2023-03-22,mpv,11.1,fL,6 - 11,Synevo
+2023-03-22,rdw_cv,13.1,%,11 - 16,Synevo
+2023-03-22,platelets,242,10^9/L,154 - 386,Synevo
+2023-03-22,neutrophils_pct,55.9,%,50 - 75,Synevo
+2023-03-22,lymphocytes_pct,30.1,%,25 - 40,Synevo
+2023-03-22,monocytes_pct,10.1,%,2 - 8,Synevo
+2023-03-22,basophils_pct,0.8,%,< 1,Synevo
+2023-03-22,eosinophils_pct,3.1,%,2 - 4,Synevo
+2023-03-22,lymphocytes,2.32,10^9/L,1.13 - 4.52,Synevo
+2023-03-22,neutrophils,4.31,10^9/L,2.25 - 7.91,Synevo
+2023-03-22,monocytes,0.78,10^9/L,0.09 - 1.04,Synevo
+2023-03-22,eosinophils,0.24,10^9/L,0.09 - 0.45,Synevo
+2023-03-22,basophils,0.06,10^9/L,< 0.11,Synevo
+2023-03-22,esr,3,mm/h,< 25,Synevo
+2023-03-22,anti_tpo,9,IU/ml,< 34,Synevo
+2023-03-22,vitamin_d_1_25,40.6,pg/ml,19.9 - 79.3,Synevo
+2023-03-22,zinc,73,µg/dl,58 - 117,Synevo
+2023-03-22,selenium,84.5,µg/l,90 - 230,Synevo
+2023-04-03,progesterone,0.06,ng/ml,Follicular phase: 0.057-0.893,Synevo
+2023-04-03,prolactin,11.3,ng/ml,6 - 29.9,Synevo
+2023-04-07,potassium_urine_24h,43.26,mEq/24,25 - 125,Synevo
+2023-09-07,wbc,5.28,10^9/L,3.80 - 10.00,JSC Curatio
+2023-09-07,rbc,4.30,10^12/L,3.80 - 5.10,JSC Curatio
+2023-09-07,hemoglobin,12.34,g/dl,11.00 - 15.30,JSC Curatio
+2023-09-07,hematocrit,36.40,%,35.00 - 47.00,JSC Curatio
+2023-09-07,mcv,84.60,fl,80.00 - 97.00,JSC Curatio
+2023-09-07,mch,28.70,pg,27.00 - 33.00,JSC Curatio
+2023-09-07,mchc,33.90,g/dl,31.00 - 36.00,JSC Curatio
+2023-09-07,rdw_cv,14.70,%,11.00 - 16.00,JSC Curatio
+2023-09-07,rdw_sd,37.80,fl,37.00 - 46.00,JSC Curatio
+2023-09-07,platelets,288.20,10^9/L,150.00 - 400.00,JSC Curatio
+2023-09-07,plateletcrit,0.26,10^-2 L/L,0.10 - 0.30,JSC Curatio
+2023-09-07,mpv,8.98,fl,8.00 - 12.00,JSC Curatio
+2023-09-07,pdw,10.32,fl,9.00 - 15.00,JSC Curatio
+2023-09-07,p_lcr,20.64,%,15.00 - 35.00,JSC Curatio
+2023-09-07,neutrophils_pct,58.89,%,50.00 - 72.00,JSC Curatio
+2023-09-07,neutrophils,3.11,10^9/L,2.20 - 7.20,JSC Curatio
+2023-09-07,lymphocytes_pct,29.15,%,20.00 - 40.00,JSC Curatio
+2023-09-07,lymphocytes,1.54,10^9/L,0.90 - 4.00,JSC Curatio
+2023-09-07,monocytes_pct,8.71,%,2.00 - 10.00,JSC Curatio
+2023-09-07,monocytes,0.46,10^9/L,0.10 - 1.00,JSC Curatio
+2023-09-07,eosinophils_pct,2.68,%,1.00 - 5.00,JSC Curatio
+2023-09-07,eosinophils,0.14,10^9/L,≤ 0.50,JSC Curatio
+2023-09-07,basophils_pct,0.57,%,≤ 1.00,JSC Curatio
+2023-09-07,basophils,0.03,10^9/L,≤ 0.10,JSC Curatio
+2023-09-07,esr,25.00,mm/h,2.00 - 27.00,JSC Curatio
+2024-03-24,ferritin,9.5,ng/ml,15 - 150,Synevo
+2024-03-24,transferrin,339,mg/dL,200 - 360,Synevo
+2024-03-24,iron,90.73,µg/dL,37 - 145,Synevo
+2024-03-24,wbc,5.34,10^9/L,4.4 - 11.3,Synevo
+2024-03-24,rbc,4.37,10^12/L,4.1 - 5.1,Synevo
+2024-03-24,hemoglobin,11.7,g/dL,11.7 - 16.2,Synevo
+2024-03-24,hematocrit,37.2,%,35 - 47,Synevo
+2024-03-24,mcv,85.1,fL,80 - 96,Synevo
+2024-03-24,mch,26.8,pg,28 - 33,Synevo
+2024-03-24,mchc,31.5,g/dL,33 - 36,Synevo
+2024-03-24,mpv,10.7,fL,6 - 11,Synevo
+2024-03-24,rdw_cv,13.3,%,11 - 16,Synevo
+2024-03-24,platelets,303,10^9/L,154 - 386,Synevo
+2024-03-24,neutrophils_pct,47.3,%,50 - 75,Synevo
+2024-03-24,lymphocytes_pct,37.5,%,25 - 40,Synevo
+2024-03-24,monocytes_pct,9.6,%,2 - 8,Synevo
+2024-03-24,basophils_pct,1.3,%,< 1,Synevo
+2024-03-24,eosinophils_pct,4.3,%,2 - 4,Synevo
+2024-03-24,lymphocytes,2,10^9/L,1.13 - 4.52,Synevo
+2024-03-24,neutrophils,2.53,10^9/L,2.25 - 7.91,Synevo
+2024-03-24,monocytes,0.51,10^9/L,0.09 - 1.04,Synevo
+2024-03-24,eosinophils,0.23,10^9/L,0.09 - 0.45,Synevo
+2024-03-24,basophils,0.07,10^9/L,< 0.11,Synevo
+2024-03-24,esr,10,mm/h,< 25,Synevo
+2024-07-11,insulin,9.23,µU/mL,2.6 - 24.9,Synevo
+2024-07-11,ferritin,36.9,ng/ml,15 - 150,Synevo
+2024-07-11,transferrin,284,mg/dL,200 - 360,Synevo
+2024-07-11,iron,104,µg/dL,37 - 145,Synevo
+2024-07-11,wbc,5.34,10^9/L,4.4 - 11.3,Synevo
+2024-07-11,rbc,4.5,10^12/L,4.1 - 5.1,Synevo
+2024-07-11,hemoglobin,12.9,g/dL,11.7 - 16.2,Synevo
+2024-07-11,hematocrit,40,%,35 - 47,Synevo
+2024-07-11,mcv,88.9,fL,80 - 96,Synevo
+2024-07-11,mch,28.7,pg,28 - 33,Synevo
+2024-07-11,mchc,32.3,g/dL,33 - 36,Synevo
+2024-07-11,mpv,10.7,fL,6 - 11,Synevo
+2024-07-11,rdw_cv,13.1,%,11 - 16,Synevo
+2024-07-11,platelets,262,10^9/L,154 - 386,Synevo
+2024-07-11,neutrophils_pct,49.4,%,50 - 75,Synevo
+2024-07-11,lymphocytes_pct,37.3,%,25 - 40,Synevo
+2024-07-11,monocytes_pct,8.8,%,2 - 8,Synevo
+2024-07-11,basophils_pct,1.1,%,< 1,Synevo
+2024-07-11,eosinophils_pct,3.4,%,2 - 4,Synevo
+2024-07-11,lymphocytes,1.99,10^9/L,1.13 - 4.52,Synevo
+2024-07-11,neutrophils,2.64,10^9/L,2.25 - 7.91,Synevo
+2024-07-11,monocytes,0.47,10^9/L,0.09 - 1.04,Synevo
+2024-07-11,eosinophils,0.18,10^9/L,0.09 - 0.45,Synevo
+2024-07-11,basophils,0.06,10^9/L,< 0.11,Synevo
+2024-07-11,esr,11,mm/h,< 25,Synevo
+2024-07-11,tsh,1.29,µU/mL,0.27 - 4.2,Synevo
+2024-07-11,free_t4,1.09,ng/dl,0.9 - 1.7,Synevo
+2024-07-11,free_t3,0.27,ng/dl,0.26 - 0.44,Synevo
+2025-03-02,ige,177,U/ml,< 100,Synevo
+2025-03-02,ferritin,18.7,ng/ml,15 - 150,Synevo
+2025-03-02,transferrin,332,mg/dL,200 - 360,Synevo
+2025-03-02,iron,57,µg/dL,37 - 145,Synevo
+2025-03-02,wbc,7.42,10^9/L,4.4 - 11.3,Synevo
+2025-03-02,rbc,4.45,10^12/L,4.1 - 5.1,Synevo
+2025-03-02,hemoglobin,12.6,g/dL,11.7 - 16.2,Synevo
+2025-03-02,hematocrit,38.4,%,35 - 47,Synevo
+2025-03-02,mcv,86.3,fL,80 - 96,Synevo
+2025-03-02,mch,28.3,pg,28 - 33,Synevo
+2025-03-02,mchc,32.8,g/dL,33 - 36,Synevo
+2025-03-02,mpv,11.3,fL,6 - 11,Synevo
+2025-03-02,rdw_cv,13.2,%,11 - 16,Synevo
+2025-03-02,platelets,275,10^9/L,154 - 386,Synevo
+2025-03-02,neutrophils_pct,56.1,%,50 - 75,Synevo
+2025-03-02,lymphocytes_pct,29.9,%,25 - 40,Synevo
+2025-03-02,monocytes_pct,9.3,%,2 - 8,Synevo
+2025-03-02,basophils_pct,1.3,%,< 1,Synevo
+2025-03-02,eosinophils_pct,3.4,%,2 - 4,Synevo
+2025-03-02,lymphocytes,2.22,10^9/L,1.13 - 4.52,Synevo
+2025-03-02,neutrophils,4.16,10^9/L,2.25 - 7.91,Synevo
+2025-03-02,monocytes,0.69,10^9/L,0.09 - 1.04,Synevo
+2025-03-02,eosinophils,0.25,10^9/L,0.09 - 0.45,Synevo
+2025-03-02,basophils,0.1,10^9/L,< 0.11,Synevo
+2025-03-02,esr,20,mm/h,< 25,Synevo
+2025-03-02,tsh,1.69,µU/mL,0.27 - 4.2,Synevo
+2025-03-02,free_t4,1.01,ng/dl,0.9 - 1.7,Synevo
+2025-03-02,free_t3,0.27,ng/dl,0.26 - 0.44,Synevo
+2025-06-15,h_pylori_igg,5.2,U/ml,< 20,Synevo
+2025-06-15,vitamin_b12,422,pg/ml,232 - 1245,Synevo
+2025-12-29,prolactin,11.2,ng/ml,4.79 - 23.3,Synevo
+2025-12-29,ferritin,12.6,ng/ml,15 - 150,Synevo
+2025-12-29,transferrin,307,mg/dL,200 - 360,Synevo
+2025-12-29,iron,32.8,µg/dL,37 - 145,Synevo
+2025-12-29,wbc,5.2,10^9/L,4.4 - 11.3,Synevo
+2025-12-29,rbc,4.39,10^12/L,4.1 - 5.1,Synevo
+2025-12-29,hemoglobin,12.1,g/dL,11.7 - 16.2,Synevo
+2025-12-29,hematocrit,37.7,%,35 - 47,Synevo
+2025-12-29,mcv,85.9,fL,80 - 96,Synevo
+2025-12-29,mch,27.6,pg,28 - 33,Synevo
+2025-12-29,mchc,32,g/dL,33 - 36,Synevo
+2025-12-29,mpv,11.6,fL,6 - 11,Synevo
+2025-12-29,rdw_cv,14.1,%,11 - 16,Synevo
+2025-12-29,platelets,299,10^9/L,154 - 386,Synevo
+2025-12-29,neutrophils_pct,48.5,%,50 - 75,Synevo
+2025-12-29,lymphocytes_pct,36.2,%,25 - 40,Synevo
+2025-12-29,monocytes_pct,9.4,%,2 - 8,Synevo
+2025-12-29,basophils_pct,1.3,%,< 1,Synevo
+2025-12-29,eosinophils_pct,4.6,%,2 - 4,Synevo
+2025-12-29,lymphocytes,1.88,10^9/L,1.13 - 4.52,Synevo
+2025-12-29,neutrophils,2.52,10^9/L,2.25 - 7.91,Synevo
+2025-12-29,monocytes,0.49,10^9/L,0.09 - 1.04,Synevo
+2025-12-29,eosinophils,0.24,10^9/L,0.09 - 0.45,Synevo
+2025-12-29,basophils,0.07,10^9/L,< 0.11,Synevo
+2025-12-29,esr,22,mm/h,< 25,Synevo
+2026-01-29,beta_hcg,10183,mIU/ml,Premenopause < 1,Zurich Medical Research Center
+2026-02-21,crp,0.18,mg/dL,< 0.5,Synevo
+2026-02-21,albumin,4.4,g/dL,3.5 - 5.2,Synevo
+2026-02-21,glucose,115,mg/dL,74 - 106,Synevo
+2026-02-21,ige,107,IU/ml,< 100,Synevo
+2026-02-21,ferritin,15,ng/ml,15 - 150,Synevo
+2026-02-21,folate,13.2,ng/ml,4.4 - 31,Synevo
+2026-02-21,transferrin_saturation,12.88,%,12 - 45,Synevo
+2026-02-21,iron,55.4,µg/dL,37 - 145,Synevo
+2026-02-21,transferrin,344,mg/dL,200 - 360,Synevo
+2026-02-21,tsh,0.86,µU/mL,0.27 - 4.2,Synevo
+2026-02-21,free_t4,1.05,ng/dl,0.92 - 1.68,Synevo
+2026-02-21,free_t3,0.2,ng/dl,0.2 - 0.44,Synevo
+2026-02-21,anti_tg,14.3,IU/ml,< 115,Synevo
+2026-02-21,anti_tpo,10.4,IU/ml,< 34,Synevo
+2026-02-21,wbc,10.33,10^9/L,4.4 - 11.3,Synevo
+2026-02-21,rbc,4.39,10^12/L,4.1 - 5.1,Synevo
+2026-02-21,hemoglobin,12.5,g/dL,11.7 - 16.2,Synevo
+2026-02-21,hematocrit,37.9,%,35 - 47,Synevo
+2026-02-21,mcv,86.3,fL,80 - 96,Synevo
+2026-02-21,mch,28.5,pg,28 - 33,Synevo
+2026-02-21,mchc,33,g/dL,33 - 36,Synevo
+2026-02-21,mpv,11.8,fL,6 - 11,Synevo
+2026-02-21,rdw_cv,13.9,%,11 - 16,Synevo
+2026-02-21,platelets,284,10^9/L,170 - 394,Synevo
+2026-02-21,neutrophils_pct,74.6,%,50 - 75,Synevo
+2026-02-21,lymphocytes_pct,17.2,%,25 - 40,Synevo
+2026-02-21,monocytes_pct,6.3,%,2 - 8,Synevo
+2026-02-21,basophils_pct,0.8,%,< 1,Synevo
+2026-02-21,eosinophils_pct,1.1,%,2 - 4,Synevo
+2026-02-21,lymphocytes,1.78,10^9/L,1.13 - 4.52,Synevo
+2026-02-21,neutrophils,7.71,10^9/L,2.25 - 7.91,Synevo
+2026-02-21,monocytes,0.65,10^9/L,0.09 - 1.04,Synevo
+2026-02-21,eosinophils,0.11,10^9/L,0.09 - 0.45,Synevo
+2026-02-21,basophils,0.08,10^9/L,< 0.11,Synevo
+2026-02-21,esr,30,mm/h,< 25,Synevo

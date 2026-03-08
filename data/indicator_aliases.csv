@@ -1,1 +1,153 @@
 canonical_name,alias
+wbc,WBC
+wbc,ლეიკოციტები (WBC)
+rbc,RBC
+rbc,ერითროციტები (RBC)
+hemoglobin,HGB
+hemoglobin,ჰემოგლობინი (HGB)
+hematocrit,HCT
+hematocrit,ჰემატოკრიტი (HCT)
+mcv,MCV
+mcv,ერითროციტების საშუალო მოცულობა (MCV)
+mch,MCH
+mch,ჰემოგლობ. საშ. შემცველობა ერითრ-ში (MCH)
+mchc,MCHC
+mchc,ჰემოგლობინის საშ. კონც. ერითრ-ში (MCHC)
+rdw_cv,RDW-CV
+rdw_cv,ერითროციტების გადანაწილების ფართი (RDW-CV)
+rdw_sd,RDW-sd
+rdw_sd,ერითროციტების გადანაწილების ფართი ( RDW-sd)
+platelets,PLT
+platelets,თრომბოციტები (PLT)
+plateletcrit,PCT
+plateletcrit,თრომბოკრიტი (PCT)
+mpv,MPV
+mpv,თრომბოციტების საშუალო მოცულობა (MPV)
+pdw,PDW
+pdw,თრომბოციტების განაწილების ფართი (PDW)
+p_lcr,P-LCR
+p_lcr,დიდი ზომის თრომბოციტების წილი (P-LCR)
+neutrophils_pct,NEUT %
+neutrophils_pct,ნეიტროფილები (NEUT) %
+neutrophils,NEUT #
+neutrophils,ნეიტროფილები (NEUT) #
+lymphocytes_pct,LYMPH %
+lymphocytes_pct,ლიმფოციტები (LYMPH) %
+lymphocytes,LYMPH #
+lymphocytes,ლიმფოციტები (LYMPH) #
+monocytes_pct,MONO %
+monocytes_pct,მონოციტი (MONO) %
+monocytes,MONO #
+monocytes,მონოციტი (MONO) #
+eosinophils_pct,EO %
+eosinophils_pct,ეოზინოფილი (EO) %
+eosinophils,EO #
+eosinophils,ეოზინოფილი (EO) #
+basophils_pct,BASO %
+basophils_pct,ბაზოფილი (BASO) %
+basophils,BASO #
+basophils,ბაზოფილი (BASO) #
+esr,ESR
+esr,E S R
+esr,ედსი
+crp,CRP
+crp,C რეაქტიული ცილა
+albumin,Albumin
+albumin,ალბუმინი
+glucose,Glucose
+glucose,გლუკოზა
+ige,IgE
+ige,იმუნოგლობულინიE
+ferritin,Ferritin
+ferritin,ფერიტინი
+folate,Folate
+folate,ფოლატი
+transferrin_saturation,TSAT
+transferrin_saturation,Transferrin saturation
+transferrin_saturation,ტრანსფერინის სატურაცია
+iron,Iron
+iron,რკინა
+transferrin,Transferrin
+transferrin,ტრანსფერინი
+tsh,TSH
+tsh,თირეოტროპული ჰორმონი
+free_t4,Free T4
+free_t4,თავისუფალი თიროქსინი
+free_t3,Free T3
+free_t3,თავისუფალი ტრიიოდთირონინი
+anti_tg,Anti TG
+anti_tg,თირეოგლობულინის აას
+anti_tpo,Anti TPO
+anti_tpo,თირეოპეროქსიდაზას აას
+wbc,Leucocytes
+wbc,ლეიკოციტები
+rbc,Erythrocytes
+rbc,ერითროციტები
+hemoglobin,Hemoglobin
+hemoglobin,ჰემოგლობინი
+hematocrit,Hematocrit
+hematocrit,ჰემატოკრიტი
+platelets,Thrombocytes
+platelets,თრომბოციტები
+neutrophils_pct,Neutrophils %
+neutrophils_pct,ნეიტროფილები %
+neutrophils,Neutrophils Abs
+neutrophils,ნეიტროფილები აბს
+lymphocytes_pct,Lymphocytes %
+lymphocytes_pct,ლიმფოციტები %
+lymphocytes,Lymphocytes Abs
+lymphocytes,ლიმფოციტები აბს
+monocytes_pct,Monocytes %
+monocytes_pct,მონოციტები %
+monocytes,Monocytes Abs
+monocytes,მონოციტები აბს
+eosinophils_pct,Eosinophils %
+eosinophils_pct,ეოზინოფილები %
+eosinophils,Eosinophils Abs
+eosinophils,ეოზინოფილები აბს
+basophils_pct,Basophils %
+basophils_pct,ბაზოფილები %
+basophils,Basophils Abs
+basophils,ბაზოფილები აბს
+vldl,VLDL
+vldl,ძალიან დაბალი სიმკვირვის ლიპოპროტეინები
+calcium_ionized,Calcium (Ionized)
+calcium_ionized,კალციუმი
+ast,AST
+ast,ასპარტატამინოტრანსფერაზა
+total_protein,Total Protein
+total_protein,საერთო ცილა
+total_bilirubin,Total Bilirubin
+total_bilirubin,საერთო ბილირუბინი
+magnesium,Mg
+magnesium,მაგნიუმი
+alp,ALP
+alp,ტუტე ფოსფატაზა
+hdl_cholesterol,HDL Cholesterol
+hdl_cholesterol,მსლ ქოლესტეროლი
+estradiol,Estradiol
+estradiol,ესტრადიოლი
+cortisol,Cortisol
+cortisol,კორტიზოლი
+vitamin_b12,Vitamin B12
+vitamin_b12,ვიტამინი B12
+progesterone,Progesterone
+progesterone,პროგესტერონი
+prolactin,Prolactin
+prolactin,პროლაქტინი
+potassium_urine_24h,K (Urine 24 hour)
+potassium_urine_24h,კალიუმი
+insulin,Insulin
+insulin,ინსულინი
+platelets,Trombocytes
+vitamin_d_1_25,"1,25-Dihydroxyvitamin D"
+vitamin_d_1_25,"1,25 -დიჰიდროქსივიტამინი D"
+zinc,Zinc (Zn)
+zinc,თუთია
+selenium,Selenium (Blood)
+selenium,სელენიუმი
+h_pylori_igg,Anti-Helicobacter pylori IgG
+h_pylori_igg,ჰ. პილორი ას IgG
+beta_hcg,β-hCG
+beta_hcg,ქორიოგონადოტროპული ჰორმონი (β-hCG)
+rdw_cv,RDW
