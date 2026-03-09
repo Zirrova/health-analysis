@@ -1,6 +1,6 @@
 import { initDB, getConnection } from './db.js';
 import {
-  buildIndicatorListQuery,
+  buildIndicatorListWithCategoriesQuery,
   buildAnalysisQuery,
   buildMinMaxQuery,
   buildTreatmentsQuery,
@@ -14,6 +14,8 @@ import { readState, writeState } from './url-state.js';
 import { initControls, getControlState, setDateRange } from './controls.js';
 import { initTheme } from './theme.js';
 
+let categoryMap = {}; // indicator name → { category, sortOrder }
+
 async function main() {
   initTheme();
 
@@ -25,9 +27,16 @@ async function main() {
     window._dbReady = true;
     loadingEl.style.display = 'none';
 
-    // Get all indicator names
-    const indicatorResult = await conn.query(buildIndicatorListQuery());
-    const allIndicators = indicatorResult.toArray().map(r => r.name);
+    // Get all indicator names with categories
+    const indicatorResult = await conn.query(buildIndicatorListWithCategoriesQuery());
+    const allIndicators = indicatorResult.toArray().map(r => {
+      const obj = rowToObj(r);
+      return {
+        name: obj.indicator_name,
+        category: obj.category,
+        sortOrder: Number(obj.sort_order),
+      };
+    });
 
     // Get data date range for defaults
     const dateRangeResult = await conn.query(buildDateRangeQuery());
@@ -39,6 +48,11 @@ async function main() {
     const urlState = readState();
     if (!urlState.dateFrom && dataMinDate) urlState.dateFrom = dataMinDate;
     if (!urlState.dateTo && dataMaxDate) urlState.dateTo = dataMaxDate;
+
+    // Build category map for table rendering
+    allIndicators.forEach(ind => {
+      categoryMap[ind.name] = { category: ind.category, sortOrder: ind.sortOrder };
+    });
 
     initControls(allIndicators, urlState, refresh);
 
@@ -125,7 +139,7 @@ async function refresh() {
     }));
 
     renderChart({ data: chartData, treatments: chartTreatments, minMax, mode: state.mode });
-    renderTable({ data: chartData, treatmentsByPeriod: tableTreatments });
+    renderTable({ data: chartData, treatmentsByPeriod: tableTreatments, categoryMap });
     writeState({ ...state, agg });
   } catch (err) {
     console.error('Query error:', err);

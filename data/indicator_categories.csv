@@ -1,0 +1,60 @@
+canonical_name,category,sort_order
+wbc,Blood Cells (CBC),1
+rbc,Blood Cells (CBC),1
+hemoglobin,Blood Cells (CBC),1
+hematocrit,Blood Cells (CBC),1
+mcv,Blood Cells (CBC),1
+mch,Blood Cells (CBC),1
+mchc,Blood Cells (CBC),1
+rdw_cv,Blood Cells (CBC),1
+rdw_sd,Blood Cells (CBC),1
+platelets,Blood Cells (CBC),1
+plateletcrit,Blood Cells (CBC),1
+mpv,Blood Cells (CBC),1
+pdw,Blood Cells (CBC),1
+p_lcr,Blood Cells (CBC),1
+neutrophils,WBC Differential,2
+neutrophils_pct,WBC Differential,2
+lymphocytes,WBC Differential,2
+lymphocytes_pct,WBC Differential,2
+monocytes,WBC Differential,2
+monocytes_pct,WBC Differential,2
+eosinophils,WBC Differential,2
+eosinophils_pct,WBC Differential,2
+basophils,WBC Differential,2
+basophils_pct,WBC Differential,2
+esr,Inflammation,3
+crp,Inflammation,3
+iron,Iron & Anemia,4
+ferritin,Iron & Anemia,4
+transferrin,Iron & Anemia,4
+transferrin_saturation,Iron & Anemia,4
+folate,Iron & Anemia,4
+vitamin_b12,Iron & Anemia,4
+tsh,Thyroid,5
+free_t3,Thyroid,5
+free_t4,Thyroid,5
+anti_tg,Thyroid,5
+anti_tpo,Thyroid,5
+hdl_cholesterol,Lipids,6
+vldl,Lipids,6
+estradiol,Hormones,7
+progesterone,Hormones,7
+prolactin,Hormones,7
+cortisol,Hormones,7
+insulin,Hormones,7
+beta_hcg,Hormones,7
+glucose,Metabolic,8
+albumin,Metabolic,8
+total_protein,Metabolic,8
+total_bilirubin,Metabolic,8
+ast,Metabolic,8
+alp,Metabolic,8
+calcium_ionized,Minerals & Vitamins,9
+magnesium,Minerals & Vitamins,9
+potassium_urine_24h,Minerals & Vitamins,9
+zinc,Minerals & Vitamins,9
+selenium,Minerals & Vitamins,9
+vitamin_d_1_25,Minerals & Vitamins,9
+ige,Immune & Allergy,10
+h_pylori_igg,Immune & Allergy,10

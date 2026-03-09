@@ -26,6 +26,19 @@ export function buildIndicatorListQuery() {
   `;
 }
 
+export function buildIndicatorListWithCategoriesQuery() {
+  return `
+    SELECT DISTINCT
+      COALESCE(ia.canonical_name, a.indicator) AS indicator_name,
+      COALESCE(ic.category, 'Other') AS category,
+      COALESCE(CAST(ic.sort_order AS INTEGER), 999) AS sort_order
+    FROM analysis a
+    LEFT JOIN indicator_aliases ia ON LOWER(TRIM(a.indicator)) = LOWER(TRIM(ia.alias))
+    LEFT JOIN indicator_categories ic ON COALESCE(ia.canonical_name, a.indicator) = ic.canonical_name
+    ORDER BY sort_order, category, indicator_name;
+  `;
+}
+
 export function buildAnalysisQuery({ indicators, dateFrom, dateTo, agg }) {
   const datePart = aggDateExpr(agg);
   const indicatorList = indicators.map(i => `'${escapeSQL(i)}'`).join(',');

@@ -45,23 +45,52 @@ function buildMultiSelect() {
 
   function getFilteredIndicators(filter = '') {
     const lower = filter.toLowerCase();
-    return allIndicators.filter(i => i.toLowerCase().includes(lower));
+    return allIndicators.filter(ind =>
+      ind.name.toLowerCase().includes(lower) ||
+      ind.category.toLowerCase().includes(lower)
+    );
+  }
+
+  function groupByCategory(indicators) {
+    const groups = [];
+    const seen = new Set();
+    for (const ind of indicators) {
+      if (!seen.has(ind.category)) {
+        seen.add(ind.category);
+        groups.push({ category: ind.category, items: [] });
+      }
+      groups.find(g => g.category === ind.category).items.push(ind.name);
+    }
+    return groups;
   }
 
   function renderOptions(filter = '') {
     const filtered = getFilteredIndicators(filter);
-    dropdown.innerHTML = `
+    const groups = groupByCategory(filtered);
+    let html = `
       <div class="multi-select-actions">
         <a href="#" class="select-all">Select all</a>
         <span class="action-sep">·</span>
         <a href="#" class="clear-all">Clear all</a>
       </div>
-    ` + filtered.map(name => `
-      <label class="multi-select-option">
-        <input type="checkbox" value="${name}" ${state.indicators.includes(name) ? 'checked' : ''}>
-        <span>${name}</span>
-      </label>
-    `).join('');
+    `;
+    for (const group of groups) {
+      const allChecked = group.items.every(n => state.indicators.includes(n));
+      html += `<div class="multi-select-group">
+        <div class="multi-select-group-header" data-category="${group.category}">
+          <input type="checkbox" class="group-checkbox" ${allChecked ? 'checked' : ''}>
+          <span>${group.category}</span>
+        </div>`;
+      for (const name of group.items) {
+        html += `
+        <label class="multi-select-option">
+          <input type="checkbox" value="${name}" ${state.indicators.includes(name) ? 'checked' : ''}>
+          <span>${name}</span>
+        </label>`;
+      }
+      html += `</div>`;
+    }
+    dropdown.innerHTML = html;
   }
 
   function renderPills() {
@@ -91,11 +120,12 @@ function buildMultiSelect() {
   dropdown.addEventListener('click', (e) => {
     const selectAll = e.target.closest('.select-all');
     const clearAll = e.target.closest('.clear-all');
+    const groupHeader = e.target.closest('.multi-select-group-header');
     if (selectAll) {
       e.preventDefault();
       const filtered = getFilteredIndicators(input.value);
-      filtered.forEach(name => {
-        if (!state.indicators.includes(name)) state.indicators.push(name);
+      filtered.forEach(ind => {
+        if (!state.indicators.includes(ind.name)) state.indicators.push(ind.name);
       });
       renderOptions(input.value);
       renderPills();
@@ -105,6 +135,24 @@ function buildMultiSelect() {
     if (clearAll) {
       e.preventDefault();
       state.indicators = [];
+      renderOptions(input.value);
+      renderPills();
+      fireChange();
+      return;
+    }
+    if (groupHeader) {
+      const category = groupHeader.dataset.category;
+      const groupItems = getFilteredIndicators(input.value)
+        .filter(ind => ind.category === category)
+        .map(ind => ind.name);
+      const allSelected = groupItems.every(n => state.indicators.includes(n));
+      if (allSelected) {
+        state.indicators = state.indicators.filter(n => !groupItems.includes(n));
+      } else {
+        groupItems.forEach(n => {
+          if (!state.indicators.includes(n)) state.indicators.push(n);
+        });
+      }
       renderOptions(input.value);
       renderPills();
       fireChange();

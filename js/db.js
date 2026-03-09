@@ -24,6 +24,7 @@ export async function initDB() {
     ['treatments', 'data/treatments.csv'],
     ['indicator_aliases', 'data/indicator_aliases.csv'],
     ['unit_conversions', 'data/unit_conversions.csv'],
+    ['indicator_categories', 'data/indicator_categories.csv'],
   ];
 
   for (const [name, path] of csvFiles) {

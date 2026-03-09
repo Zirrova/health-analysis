@@ -200,6 +200,27 @@ button.active:hover {
   color: var(--color-text-secondary);
 }
 
+.multi-select-group-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  cursor: pointer;
+  user-select: none;
+}
+
+.multi-select-group-header:hover {
+  background: var(--color-accent-light);
+}
+
+.multi-select-group-header input[type="checkbox"] {
+  accent-color: var(--color-accent);
+}
+
 .multi-select-option {
   display: flex;
   align-items: center;
@@ -323,6 +344,15 @@ button.active:hover {
 
 #table-wrapper tr:nth-child(even) td:not(.sticky-col) {
   background: var(--color-surface);
+}
+
+.category-row td {
+  background: var(--color-surface-alt, var(--color-surface));
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: left;
+  padding: var(--space-xs) var(--space-md);
 }
 
 .treatment-row td {
