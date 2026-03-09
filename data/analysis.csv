@@ -217,3 +217,5 @@ date,indicator,value,units,laboratory_reference,laboratory
 2026-02-21,eosinophils,0.11,10^9/L,0.09 - 0.45,Synevo
 2026-02-21,basophils,0.08,10^9/L,< 0.11,Synevo
 2026-02-21,esr,30,mm/h,< 25,Synevo
+2026-03-09,glucose,83.1,mg/dL,74 - 106,Synevo
+2026-03-09,vitamin_b12,358,pg/ml,232 - 1245,Synevo
