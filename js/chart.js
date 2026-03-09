@@ -163,17 +163,10 @@ export function renderChart({ data, treatments, minMax, mode }) {
   // Remove the text traces for treatments (we use annotations instead)
   const plotTraces = traces.filter(t => t.mode !== 'text');
 
-  window._chartDebug = { traceCount: plotTraces.length, mode, shapeCount: shapes.length, indicatorCount: indicators.length };
   try {
-    Plotly.react(chartEl, plotTraces, layout, { responsive: true, displayModeBar: false })
-      .catch(err => {
-        console.error('Chart async error:', err);
-        window._chartAsyncError = err.message;
-        chartEl.innerHTML = `<p class="empty-state">Chart error: ${err.message}</p>`;
-      });
+    Plotly.react(chartEl, plotTraces, layout, { responsive: true, displayModeBar: false });
   } catch (err) {
     console.error('Chart render error:', err);
-    window._chartSyncError = err.message;
     chartEl.innerHTML = `<p class="empty-state">Chart error: ${err.message}</p>`;
   }
 }
