@@ -6,9 +6,12 @@ export function initTheme() {
 export function getPlotlyTheme() {
   const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   return {
-    paper_bgcolor: isDark ? '#1a1a2e' : '#f8f9fa',
-    plot_bgcolor: isDark ? '#1a1a2e' : '#f8f9fa',
-    font: { color: isDark ? '#e0e0e0' : '#1a1a2e' },
-    gridcolor: isDark ? '#333' : '#dee2e6',
+    paper_bgcolor: isDark ? '#1a1a1a' : '#ffffff',
+    plot_bgcolor: isDark ? '#1a1a1a' : '#ffffff',
+    font: {
+      color: isDark ? '#e8e8e8' : '#222222',
+      family: "'Source Sans 3', system-ui, -apple-system, sans-serif",
+    },
+    gridcolor: isDark ? '#404040' : '#d9d9d9',
   };
 }

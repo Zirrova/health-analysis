@@ -1,8 +1,8 @@
 import { getPlotlyTheme } from './theme.js';
 
 const COLORS = [
-  '#4361ee', '#e63946', '#2a9d8f', '#e9c46a', '#f4a261',
-  '#264653', '#e76f51', '#606c38', '#9b2226', '#6a4c93',
+  '#2563eb', '#dc2626', '#16a34a', '#f59e0b', '#8b5cf6',
+  '#06b6d4', '#ec4899', '#84cc16', '#f97316', '#6366f1',
 ];
 
 export function renderChart({ data, treatments, minMax, mode }) {
@@ -22,10 +22,20 @@ export function renderChart({ data, treatments, minMax, mode }) {
   const theme = getPlotlyTheme();
 
   const layout = {
-    xaxis: { type: 'date', gridcolor: theme.gridcolor },
-    hovermode: 'closest',
-    legend: { orientation: 'h', y: -0.15 },
-    margin: { t: 20, r: 80, b: 60, l: 60 },
+    xaxis: {
+      type: 'date',
+      gridcolor: 'rgba(0,0,0,0)',
+      showgrid: false,
+      linecolor: theme.gridcolor,
+      linewidth: 1,
+    },
+    hovermode: 'x unified',
+    legend: {
+      orientation: 'h',
+      y: -0.15,
+      font: { size: 12 },
+    },
+    margin: { t: 16, r: 80, b: 60, l: 60 },
     paper_bgcolor: theme.paper_bgcolor,
     plot_bgcolor: theme.plot_bgcolor,
     font: theme.font,
@@ -34,15 +44,18 @@ export function renderChart({ data, treatments, minMax, mode }) {
 
   if (mode === 'normalized') {
     layout.yaxis = {
-      title: 'Normalized (0–100%)',
+      title: { text: 'Normalized (0–100%)', font: { size: 12, color: theme.font.color } },
       range: [-5, 105],
       gridcolor: theme.gridcolor,
+      gridwidth: 1,
+      zeroline: false,
     };
 
     indicators.forEach((ind, i) => {
       const rows = grouped[ind];
       const mm = minMax[ind] || { min_val: 0, max_val: 1 };
       const range = mm.max_val - mm.min_val || 1;
+      const color = COLORS[i % COLORS.length];
 
       traces.push({
         x: rows.map(r => r.period),
@@ -50,34 +63,39 @@ export function renderChart({ data, treatments, minMax, mode }) {
         name: ind,
         type: 'scatter',
         mode: 'lines+markers',
-        line: { color: COLORS[i % COLORS.length] },
-        marker: { color: COLORS[i % COLORS.length], size: 7 },
+        line: { color, width: 2 },
+        marker: { color, size: 5 },
         customdata: rows.map(r => [r.avg_value, r.obs_count, r.units || '']),
-        hovertemplate: `<b>${ind}</b><br>Value: %{customdata[0]:.2f} %{customdata[2]}<br>Normalized: %{y:.1f}%<br>Observations: %{customdata[1]}<extra></extra>`,
+        hovertemplate: `<b>${ind}</b>  %{customdata[0]:.2f} %{customdata[2]}<extra></extra>`,
       });
 
+      // Reference range as dashed lines
       const ref = findReference(rows);
       if (ref) {
         const yLow = ((ref.low - mm.min_val) / range) * 100;
         const yHigh = ((ref.high - mm.min_val) / range) * 100;
         shapes.push({
-          type: 'rect', xref: 'paper', x0: 0, x1: 1,
-          yref: 'y', y0: yLow, y1: yHigh,
-          fillcolor: COLORS[i % COLORS.length].replace(')', ', 0.07)').replace('rgb', 'rgba').replace('#', ''),
-          line: { width: 0 },
+          type: 'line', xref: 'paper', x0: 0, x1: 1,
+          yref: 'y', y0: yLow, y1: yLow,
+          line: { color: hexToRgba(color, 0.3), width: 1, dash: 'dash' },
           layer: 'below',
         });
-        // Use a simpler approach for hex colors
-        shapes[shapes.length - 1].fillcolor = hexToRgba(COLORS[i % COLORS.length], 0.07);
+        shapes.push({
+          type: 'line', xref: 'paper', x0: 0, x1: 1,
+          yref: 'y', y0: yHigh, y1: yHigh,
+          line: { color: hexToRgba(color, 0.3), width: 1, dash: 'dash' },
+          layer: 'below',
+        });
       }
     });
   } else {
-    // Raw mode: multiple Y axes
+    // Raw mode: multiple Y axes, cleaner
     indicators.forEach((ind, i) => {
       const yAxisName = i === 0 ? 'y' : `y${i + 1}`;
       const yAxisKey = i === 0 ? 'yaxis' : `yaxis${i + 1}`;
       const rows = grouped[ind];
       const units = rows[0]?.units || '';
+      const color = COLORS[i % COLORS.length];
 
       traces.push({
         x: rows.map(r => r.period),
@@ -86,35 +104,46 @@ export function renderChart({ data, treatments, minMax, mode }) {
         type: 'scatter',
         mode: 'lines+markers',
         yaxis: yAxisName,
-        line: { color: COLORS[i % COLORS.length] },
-        marker: { color: COLORS[i % COLORS.length], size: 7 },
+        line: { color, width: 2 },
+        marker: { color, size: 5 },
         customdata: rows.map(r => [r.obs_count]),
-        hovertemplate: `<b>${ind}</b><br>Value: %{y:.2f} ${units}<br>Observations: %{customdata[0]}<extra></extra>`,
+        hovertemplate: `<b>${ind}</b>  %{y:.2f} ${units}<extra></extra>`,
       });
 
+      // Only show gridlines for first axis, clean up axis display
+      const showTicks = i < 2; // only show ticks for first two axes
       layout[yAxisKey] = {
-        title: { text: ind, font: { color: COLORS[i % COLORS.length], size: 12 } },
         overlaying: i > 0 ? 'y' : undefined,
         side: i % 2 === 0 ? 'left' : 'right',
         showgrid: i === 0,
         gridcolor: theme.gridcolor,
-        tickfont: { color: COLORS[i % COLORS.length] },
+        gridwidth: 1,
+        zeroline: false,
+        showticklabels: showTicks,
+        tickfont: { color, size: 11 },
+        showline: false,
       };
 
       // Offset additional axes
       if (i >= 2) {
-        const offset = Math.floor(i / 2) * 0.07;
+        const offset = Math.floor(i / 2) * 0.06;
         layout[yAxisKey].position = i % 2 === 0 ? offset : 1 - offset;
         layout[yAxisKey].anchor = 'free';
       }
 
+      // Reference range as dashed lines
       const ref = findReference(rows);
       if (ref) {
         shapes.push({
-          type: 'rect', xref: 'paper', x0: 0, x1: 1,
-          yref: yAxisName, y0: ref.low, y1: ref.high,
-          fillcolor: hexToRgba(COLORS[i % COLORS.length], 0.07),
-          line: { width: 0 },
+          type: 'line', xref: 'paper', x0: 0, x1: 1,
+          yref: yAxisName, y0: ref.low, y1: ref.low,
+          line: { color: hexToRgba(color, 0.3), width: 1, dash: 'dash' },
+          layer: 'below',
+        });
+        shapes.push({
+          type: 'line', xref: 'paper', x0: 0, x1: 1,
+          yref: yAxisName, y0: ref.high, y1: ref.high,
+          line: { color: hexToRgba(color, 0.3), width: 1, dash: 'dash' },
           layer: 'below',
         });
       }
@@ -127,28 +156,15 @@ export function renderChart({ data, treatments, minMax, mode }) {
       type: 'rect',
       xref: 'x', x0: t.start_date, x1: t.end_date,
       yref: 'paper', y0: 0, y1: 1,
-      fillcolor: 'rgba(147, 112, 219, 0.12)',
-      line: { width: 1, color: 'rgba(147, 112, 219, 0.35)', dash: 'dot' },
+      fillcolor: 'rgba(147, 112, 219, 0.08)',
+      line: { width: 1, color: 'rgba(147, 112, 219, 0.25)', dash: 'dot' },
       layer: 'below',
-    });
-    // Add annotation for treatment name
-    traces.push({
-      x: [t.start_date],
-      y: [1.02],
-      text: [t.treatment],
-      mode: 'text',
-      textposition: 'top right',
-      textfont: { size: 9, color: 'rgba(147, 112, 219, 0.8)' },
-      showlegend: false,
-      yaxis: mode === 'normalized' ? 'y' : 'y',
-      hoverinfo: 'skip',
-      yref: 'paper',
     });
   });
 
   layout.shapes = shapes;
 
-  // Treatment annotations instead of traces (cleaner)
+  // Treatment annotations
   layout.annotations = treatments.map(t => ({
     x: t.start_date,
     y: 1,
@@ -160,11 +176,8 @@ export function renderChart({ data, treatments, minMax, mode }) {
     xanchor: 'left',
   }));
 
-  // Remove the text traces for treatments (we use annotations instead)
-  const plotTraces = traces.filter(t => t.mode !== 'text');
-
   try {
-    Plotly.react(chartEl, plotTraces, layout, { responsive: true, displayModeBar: false });
+    Plotly.react(chartEl, traces, layout, { responsive: true, displayModeBar: false });
   } catch (err) {
     console.error('Chart render error:', err);
     chartEl.innerHTML = `<p class="empty-state">Chart error: ${err.message}</p>`;
