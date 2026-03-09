@@ -43,10 +43,20 @@ function buildMultiSelect() {
   const dropdown = container.querySelector('.multi-select-dropdown');
   const pills = container.querySelector('.multi-select-pills');
 
-  function renderOptions(filter = '') {
+  function getFilteredIndicators(filter = '') {
     const lower = filter.toLowerCase();
-    const filtered = allIndicators.filter(i => i.toLowerCase().includes(lower));
-    dropdown.innerHTML = filtered.map(name => `
+    return allIndicators.filter(i => i.toLowerCase().includes(lower));
+  }
+
+  function renderOptions(filter = '') {
+    const filtered = getFilteredIndicators(filter);
+    dropdown.innerHTML = `
+      <div class="multi-select-actions">
+        <a href="#" class="select-all">Select all</a>
+        <span class="action-sep">·</span>
+        <a href="#" class="clear-all">Clear all</a>
+      </div>
+    ` + filtered.map(name => `
       <label class="multi-select-option">
         <input type="checkbox" value="${name}" ${state.indicators.includes(name) ? 'checked' : ''}>
         <span>${name}</span>
@@ -75,6 +85,30 @@ function buildMultiSelect() {
   document.addEventListener('click', (e) => {
     if (!container.contains(e.target)) {
       container.classList.remove('open');
+    }
+  });
+
+  dropdown.addEventListener('click', (e) => {
+    const selectAll = e.target.closest('.select-all');
+    const clearAll = e.target.closest('.clear-all');
+    if (selectAll) {
+      e.preventDefault();
+      const filtered = getFilteredIndicators(input.value);
+      filtered.forEach(name => {
+        if (!state.indicators.includes(name)) state.indicators.push(name);
+      });
+      renderOptions(input.value);
+      renderPills();
+      fireChange();
+      return;
+    }
+    if (clearAll) {
+      e.preventDefault();
+      state.indicators = [];
+      renderOptions(input.value);
+      renderPills();
+      fireChange();
+      return;
     }
   });
 

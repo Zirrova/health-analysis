@@ -173,6 +173,33 @@ button.active:hover {
   display: block;
 }
 
+.multi-select-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+  z-index: 1;
+}
+
+.multi-select-actions a {
+  color: var(--color-accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.multi-select-actions a:hover {
+  text-decoration: underline;
+}
+
+.action-sep {
+  color: var(--color-text-secondary);
+}
+
 .multi-select-option {
   display: flex;
   align-items: center;
