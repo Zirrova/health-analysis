@@ -1,4 +1,5 @@
 let state = {
+  person: null,
   indicators: [],
   dateFrom: null,
   dateTo: null,
@@ -8,6 +9,18 @@ let state = {
 
 let allIndicators = [];
 let onChangeCallback = null;
+
+export function initPersonSelect(people, initialPerson, onPersonChange) {
+  const select = document.getElementById('person-select');
+  select.innerHTML = people.map(p =>
+    `<option value="${p.id}" ${p.id === initialPerson ? 'selected' : ''}>${p.name}</option>`
+  ).join('');
+  state.person = initialPerson;
+  select.addEventListener('change', () => {
+    state.person = select.value;
+    onPersonChange(select.value);
+  });
+}
 
 export function initControls(indicators, initialState, onChange) {
   allIndicators = indicators;
@@ -22,6 +35,13 @@ export function initControls(indicators, initialState, onChange) {
   bindModeButtons();
 
   syncUIFromState();
+}
+
+export function updateIndicators(indicators) {
+  allIndicators = indicators;
+  const validNames = new Set(indicators.map(i => i.name));
+  state.indicators = state.indicators.filter(n => validNames.has(n));
+  buildMultiSelect();
 }
 
 export function getControlState() {

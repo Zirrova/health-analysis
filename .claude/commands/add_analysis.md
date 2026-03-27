@@ -12,6 +12,11 @@ $ARGUMENTS
 
 ## Steps
 
+0. **Identify the person**:
+   - Read `data/people.json` for the list of people
+   - Ask the user which person these results are for (show the names from people.json)
+   - Use the person's `id` to determine the target file: `data/{id}_analysis.csv`
+
 1. **Parse the input**: Read the PDF (using vision) or text to extract lab results. Each result needs:
    - Date of analysis (YYYY-MM-DD)
    - Indicator name (may be in Georgian or English)
@@ -26,10 +31,10 @@ $ARGUMENTS
      - If alias match exists (case-insensitive) → use canonical name
      - If no match → propose a canonical English name (lowercase, underscores) and ask user to confirm
    - Read `data/unit_conversions.csv` for unit conversion rules
-   - If same indicator exists in `data/analysis.csv` with different units → auto-convert and note it
+   - If same indicator exists in the person's analysis CSV with different units → auto-convert and note it
 
 3. **Check for duplicates**:
-   - Read `data/analysis.csv`
+   - Read `data/{id}_analysis.csv`
    - Check for existing (date, canonical_indicator) pairs
    - Mark duplicates to skip
 
@@ -46,7 +51,7 @@ $ARGUMENTS
 5. **Wait for user approval** before making any changes.
 
 6. **On confirmation**:
-   - Append new rows to `data/analysis.csv`
+   - Append new rows to `data/{id}_analysis.csv`
    - Add new aliases to `data/indicator_aliases.csv`
    - Report what was added
 
@@ -55,4 +60,4 @@ $ARGUMENTS
 - Preserve exact `laboratory_reference` text from source
 - Dates must be YYYY-MM-DD
 - Values must be numeric; if non-numeric (e.g. "positive"), ask user how to handle
-- Keep `data/analysis.csv` sorted by date
+- Keep the person's analysis CSV sorted by date

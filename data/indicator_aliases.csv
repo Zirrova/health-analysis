@@ -151,3 +151,42 @@ h_pylori_igg,ჰ. პილორი ას IgG
 beta_hcg,β-hCG
 beta_hcg,ქორიოგონადოტროპული ჰორმონი (β-hCG)
 rdw_cv,RDW
+globulin,Globulin
+globulin,გლობულინი
+globulin,Глобулин (GLOB)
+alt,ALT
+alt,ალტ
+alt,АЛТ (ALT)
+creatinine,Creatinine
+creatinine,კრეატინინი
+creatinine,Креатинин (Crea)
+urea,Urea
+urea,BUN
+urea,შარდოვანა
+urea,Мочевина (Bun)
+phosphorus,Phosphorus
+phosphorus,ფოსფორი
+phosphorus,Фосфор (P)
+platelets_manual,Platelets (manual)
+platelets_manual,Тромбоциты (ручной подсчет)
+band_neutrophils,Band Neutrophils
+band_neutrophils,ზოლები ნეიტროფილები
+band_neutrophils,Палочкоядерные нейтрофилы (Bands) Abs
+segmented_neutrophils,Segmented Neutrophils
+segmented_neutrophils,სეგმენტირებული ნეიტროფილები
+segmented_neutrophils,Сегментоядерные нейтрофилы (Seg) Abs
+segmented_neutrophils_pct,Segmented Neutrophils %
+segmented_neutrophils_pct,სეგმენტირებული ნეიტროფილები %
+segmented_neutrophils_pct,Сегментоядерные нейтрофилы (Seg) %
+hba1c,Hemoglobin A1C
+hba1c,გლიკოზირებული ჰემოგლობინი
+hba1c,HbA1c
+triglycerides,Triglycerides
+triglycerides,ტრიგლიცერიდები
+total_cholesterol,Total Cholesterol
+total_cholesterol,საერთო ქოლესტეროლი
+ldl_cholesterol,LDL Cholesterol
+ldl_cholesterol,დსლ ქოლესტეროლი
+atherogenic_index,Atherogenic index
+atherogenic_index,ათეროგენობის ინდექსი
+segmented_neutrophils_pct,Сегментоядерные нейтрофილы (Seg) %

@@ -2,6 +2,7 @@
 
 ## Overview
 Single-page web app for tracking health analysis results and treatments over time.
+Supports multiple people — each person has separate analysis and treatment CSV files.
 Data in CSV files in `data/`. Frontend uses DuckDB-WASM (in-browser SQL) + Plotly.js. No build step.
 
 ## Quick Start
@@ -19,10 +20,11 @@ python3 -m http.server 8000
 ## File Layout
 ```
 data/                       CSV data (committed to repo)
-  analysis.csv              Lab results — date,indicator,value,units,laboratory_reference,laboratory
-  treatments.csv            Treatments — start_date,end_date,treatment
-  indicator_aliases.csv     Maps variant names → canonical English names
-  unit_conversions.csv      Unit conversion factors (from_unit,to_unit,factor)
+  people.json               Person config — [{id, name}]
+  {id}_analysis.csv         Per-person lab results — date,indicator,value,units,laboratory_reference,laboratory
+  {id}_treatments.csv       Per-person treatments — start_date,end_date,treatment
+  indicator_aliases.csv     Maps variant names → canonical English names (shared)
+  unit_conversions.csv      Unit conversion factors (shared)
 js/                         ES modules
   app.js                    Entry point
   db.js                     DuckDB-WASM init + CSV loading
@@ -44,8 +46,8 @@ css/style.css               Layout + components
 - Lab results may be in Georgian or English; always mapped to English canonical via aliases
 
 ## Custom Commands
-- `/add_analysis` — parse lab results (PDF/text), resolve indicators, append to CSVs
-- `/add_treatment` — add treatment records
+- `/add_analysis` — parse lab results (PDF/text), ask which person, resolve indicators, append to person's CSV
+- `/add_treatment` — ask which person, add treatment records to person's CSV
 
 ## Testing with Rodney
 ```bash

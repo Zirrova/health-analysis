@@ -1,6 +1,7 @@
 export function readState() {
   const params = new URLSearchParams(window.location.search);
   return {
+    person: params.get('person') || null,
     indicators: params.get('indicators')?.split(',').filter(Boolean) || [],
     dateFrom: params.get('from') || null,
     dateTo: params.get('to') || null,
@@ -11,6 +12,7 @@ export function readState() {
 
 export function writeState(state) {
   const params = new URLSearchParams();
+  if (state.person) params.set('person', state.person);
   if (state.indicators?.length) params.set('indicators', state.indicators.join(','));
   if (state.dateFrom) params.set('from', state.dateFrom);
   if (state.dateTo) params.set('to', state.dateTo);

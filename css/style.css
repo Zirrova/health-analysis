@@ -78,6 +78,18 @@ header h1 {
   letter-spacing: 0.05em;
 }
 
+/* Person select */
+#person-select {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
 /* Date controls */
 #date-range-controls {
   display: flex;

@@ -1,4 +1,4 @@
-import { initDB, getConnection } from './db.js';
+import { initDB, getConnection, loadPersonData, getPeople } from './db.js';
 import {
   buildIndicatorListWithCategoriesQuery,
   buildAnalysisQuery,
@@ -11,7 +11,7 @@ import {
 import { renderChart } from './chart.js';
 import { renderTable } from './table.js';
 import { readState, writeState } from './url-state.js';
-import { initControls, getControlState, setDateRange } from './controls.js';
+import { initControls, getControlState, setDateRange, initPersonSelect, updateIndicators } from './controls.js';
 import { initTheme } from './theme.js';
 
 let categoryMap = {}; // indicator name → { category, sortOrder }
@@ -27,16 +27,20 @@ async function main() {
     window._dbReady = true;
     loadingEl.style.display = 'none';
 
-    // Get all indicator names with categories
-    const indicatorResult = await conn.query(buildIndicatorListWithCategoriesQuery());
-    const allIndicators = indicatorResult.toArray().map(r => {
-      const obj = rowToObj(r);
-      return {
-        name: obj.indicator_name,
-        category: obj.category,
-        sortOrder: Number(obj.sort_order),
-      };
-    });
+    const people = getPeople();
+    const urlState = readState();
+
+    // Resolve person: URL param (if valid) or first person
+    const validIds = new Set(people.map(p => p.id));
+    const initialPerson = (urlState.person && validIds.has(urlState.person))
+      ? urlState.person
+      : people[0].id;
+
+    // Load initial person's data
+    await loadPersonData(initialPerson);
+
+    // Fetch indicators for this person
+    const allIndicators = await fetchIndicators(conn);
 
     // Get data date range for defaults
     const dateRangeResult = await conn.query(buildDateRangeQuery());
@@ -45,7 +49,6 @@ async function main() {
     const dataMaxDate = dateRange?.max_date || null;
 
     // Merge URL state with defaults
-    const urlState = readState();
     if (!urlState.dateFrom && dataMinDate) urlState.dateFrom = dataMinDate;
     if (!urlState.dateTo && dataMaxDate) urlState.dateTo = dataMaxDate;
 
@@ -54,7 +57,11 @@ async function main() {
       categoryMap[ind.name] = { category: ind.category, sortOrder: ind.sortOrder };
     });
 
-    initControls(allIndicators, urlState, refresh);
+    // Init person select
+    initPersonSelect(people, initialPerson, onPersonChange);
+
+    // Init other controls
+    initControls(allIndicators, { ...urlState, person: initialPerson }, refresh);
 
     if (allIndicators.length === 0) {
       loadingEl.style.display = 'block';
@@ -68,6 +75,45 @@ async function main() {
     errorEl.textContent = `Failed to initialize: ${err.message}`;
     errorEl.classList.add('visible');
   }
+}
+
+async function onPersonChange(personId) {
+  const conn = getConnection();
+  const loadingEl = document.getElementById('loading');
+
+  await loadPersonData(personId);
+
+  const allIndicators = await fetchIndicators(conn);
+
+  // Rebuild category map
+  categoryMap = {};
+  allIndicators.forEach(ind => {
+    categoryMap[ind.name] = { category: ind.category, sortOrder: ind.sortOrder };
+  });
+
+  // Update indicator dropdown, preserving valid selections
+  updateIndicators(allIndicators);
+
+  if (allIndicators.length === 0) {
+    loadingEl.style.display = 'block';
+    loadingEl.textContent = 'No data yet. Use /add_analysis to add lab results.';
+  } else {
+    loadingEl.style.display = 'none';
+  }
+
+  await refresh();
+}
+
+async function fetchIndicators(conn) {
+  const result = await conn.query(buildIndicatorListWithCategoriesQuery());
+  return result.toArray().map(r => {
+    const obj = rowToObj(r);
+    return {
+      name: obj.indicator_name,
+      category: obj.category,
+      sortOrder: Number(obj.sort_order),
+    };
+  });
 }
 
 async function refresh() {
