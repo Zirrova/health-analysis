@@ -80,33 +80,11 @@ export function buildTreatmentsQuery({ dateFrom, dateTo }) {
     SELECT
       treatment,
       STRFTIME(CAST(start_date AS DATE), '%Y-%m-%d') AS start_date,
-      STRFTIME(COALESCE(NULLIF(TRIM(end_date), '')::DATE, '${dateTo}'::DATE), '%Y-%m-%d') AS end_date
+      STRFTIME(NULLIF(TRIM(end_date), '')::DATE, '%Y-%m-%d') AS end_date
     FROM treatments
     WHERE start_date::DATE <= '${dateTo}'::DATE
       AND COALESCE(NULLIF(TRIM(end_date), '')::DATE, CURRENT_DATE) >= '${dateFrom}'::DATE
     ORDER BY start_date;
-  `;
-}
-
-export function buildTreatmentsByPeriodQuery({ dateFrom, dateTo, agg }) {
-  const interval = agg === 'days' ? '1 DAY' : agg === 'weeks' ? '7 DAY' : '1 MONTH';
-  return `
-    WITH periods AS (
-      SELECT UNNEST(generate_series(
-        '${dateFrom}'::DATE,
-        '${dateTo}'::DATE,
-        INTERVAL ${interval}
-      )) AS period
-    )
-    SELECT
-      STRFTIME(p.period, '%Y-%m-%d') AS period,
-      STRING_AGG(DISTINCT t.treatment, ', ') AS treatments
-    FROM periods p
-    LEFT JOIN treatments t
-      ON t.start_date::DATE <= p.period + INTERVAL ${interval}
-      AND COALESCE(NULLIF(TRIM(t.end_date), '')::DATE, CURRENT_DATE) >= p.period
-    GROUP BY p.period
-    ORDER BY p.period;
   `;
 }
 

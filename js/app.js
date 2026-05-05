@@ -4,12 +4,11 @@ import {
   buildAnalysisQuery,
   buildMinMaxQuery,
   buildTreatmentsQuery,
-  buildTreatmentsByPeriodQuery,
   buildDateRangeQuery,
   autoAggregation,
 } from './queries.js';
 import { renderChart } from './chart.js';
-import { renderTable } from './table.js';
+import { renderTable, renderTreatments } from './table.js';
 import { readState, writeState } from './url-state.js';
 import { initControls, getControlState, setDateRange, initPersonSelect, updateIndicators } from './controls.js';
 import { initTheme } from './theme.js';
@@ -123,8 +122,9 @@ async function refresh() {
   const state = getControlState();
 
   if (!state.indicators.length) {
-    renderChart({ data: [], treatments: [], minMax: {}, mode: state.mode });
-    renderTable({ data: [], treatmentsByPeriod: [] });
+    renderChart({ data: [], minMax: {}, mode: state.mode });
+    renderTable({ data: [] });
+    renderTreatments({ treatments: [] });
     writeState(state);
     return;
   }
@@ -147,18 +147,16 @@ async function refresh() {
   const effectiveState = { ...state, dateFrom, dateTo, agg };
 
   try {
-    const [analysisResult, treatmentsResult, minMaxResult, treatmentsByPeriodResult] =
+    const [analysisResult, treatmentsResult, minMaxResult] =
       await Promise.all([
         conn.query(buildAnalysisQuery(effectiveState)),
         conn.query(buildTreatmentsQuery(effectiveState)),
         conn.query(buildMinMaxQuery(effectiveState)),
-        conn.query(buildTreatmentsByPeriodQuery(effectiveState)),
       ]);
 
     const data = analysisResult.toArray().map(rowToObj);
     const treatments = treatmentsResult.toArray().map(rowToObj);
     const minMaxRows = minMaxResult.toArray().map(rowToObj);
-    const treatmentsByPeriod = treatmentsByPeriodResult.toArray().map(rowToObj);
 
     const minMax = {};
     minMaxRows.forEach(r => {
@@ -173,19 +171,15 @@ async function refresh() {
       obs_count: Number(r.obs_count),
     }));
 
-    const chartTreatments = treatments.map(r => ({
+    const tableTreatments = treatments.map(r => ({
       ...r,
       start_date: formatDate(r.start_date),
       end_date: formatDate(r.end_date),
     }));
 
-    const tableTreatments = treatmentsByPeriod.map(r => ({
-      ...r,
-      period: formatDate(r.period),
-    }));
-
-    renderChart({ data: chartData, treatments: chartTreatments, minMax, mode: state.mode });
-    renderTable({ data: chartData, treatmentsByPeriod: tableTreatments, categoryMap });
+    renderChart({ data: chartData, minMax, mode: state.mode });
+    renderTable({ data: chartData, categoryMap });
+    renderTreatments({ treatments: tableTreatments });
     writeState({ ...state, agg });
   } catch (err) {
     console.error('Query error:', err);

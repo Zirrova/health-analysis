@@ -400,12 +400,47 @@ button.active:hover {
   border-right-color: transparent;
 }
 
-.treatment-row td {
+/* Treatments table */
+#treatments-container {
+  margin-bottom: var(--space-lg);
+}
+
+#treatments-container h2 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+#treatments-wrapper {
+  overflow-x: auto;
+}
+
+#treatments-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+}
+
+#treatments-wrapper th,
+#treatments-wrapper td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+#treatments-wrapper th {
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.treatment-ongoing {
   font-style: italic;
   color: var(--color-text-secondary);
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .empty-state {

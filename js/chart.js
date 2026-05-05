@@ -5,7 +5,7 @@ const COLORS = [
   '#06b6d4', '#ec4899', '#84cc16', '#f97316', '#6366f1',
 ];
 
-export function renderChart({ data, treatments, minMax, mode }) {
+export function renderChart({ data, minMax, mode }) {
   const chartEl = document.getElementById('chart');
 
   if (!data.length) {
@@ -150,31 +150,7 @@ export function renderChart({ data, treatments, minMax, mode }) {
     });
   }
 
-  // Treatment spans
-  treatments.forEach(t => {
-    shapes.push({
-      type: 'rect',
-      xref: 'x', x0: t.start_date, x1: t.end_date,
-      yref: 'paper', y0: 0, y1: 1,
-      fillcolor: 'rgba(147, 112, 219, 0.08)',
-      line: { width: 1, color: 'rgba(147, 112, 219, 0.25)', dash: 'dot' },
-      layer: 'below',
-    });
-  });
-
   layout.shapes = shapes;
-
-  // Treatment annotations
-  layout.annotations = treatments.map(t => ({
-    x: t.start_date,
-    y: 1,
-    yref: 'paper',
-    text: t.treatment,
-    showarrow: false,
-    font: { size: 9, color: 'rgba(147, 112, 219, 0.9)' },
-    yanchor: 'bottom',
-    xanchor: 'left',
-  }));
 
   try {
     Plotly.react(chartEl, traces, layout, { responsive: true, displayModeBar: false });

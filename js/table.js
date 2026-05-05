@@ -1,4 +1,4 @@
-export function renderTable({ data, treatmentsByPeriod, categoryMap }) {
+export function renderTable({ data, categoryMap }) {
   const wrapper = document.getElementById('table-wrapper');
 
   if (!data.length) {
@@ -37,12 +37,6 @@ export function renderTable({ data, treatmentsByPeriod, categoryMap }) {
     lookup[r.indicator][String(r.period)] = { value: r.avg_value, units: r.units || '' };
   });
 
-  // Treatment lookup: period -> text
-  const treatLookup = {};
-  (treatmentsByPeriod || []).forEach(r => {
-    treatLookup[String(r.period)] = r.treatments || '';
-  });
-
   const formatPeriod = (p) => {
     const d = new Date(p);
     if (isNaN(d)) return p;
@@ -77,14 +71,33 @@ export function renderTable({ data, treatmentsByPeriod, categoryMap }) {
     }
   }
 
-  // Treatment row
-  html += `<tr class="treatment-row"><td class="sticky-col">Treatments</td>`;
-  periods.forEach(p => {
-    const text = treatLookup[p] || '—';
-    html += `<td title="${text}">${text}</td>`;
-  });
-  html += '</tr>';
+  html += '</tbody></table>';
+  wrapper.innerHTML = html;
+}
 
+export function renderTreatments({ treatments }) {
+  const wrapper = document.getElementById('treatments-wrapper');
+  if (!wrapper) return;
+
+  if (!treatments || !treatments.length) {
+    wrapper.innerHTML = '';
+    return;
+  }
+
+  const fmt = (d) => {
+    if (!d) return null;
+    const dt = new Date(d);
+    if (isNaN(dt)) return d;
+    return dt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  };
+
+  const sorted = [...treatments].sort((a, b) => String(b.start_date).localeCompare(String(a.start_date)));
+
+  let html = '<table><thead><tr><th>Treatment</th><th>Start</th><th>End</th></tr></thead><tbody>';
+  for (const t of sorted) {
+    const end = fmt(t.end_date) || '<span class="treatment-ongoing">Ongoing</span>';
+    html += `<tr><td>${t.treatment}</td><td>${fmt(t.start_date) || '—'}</td><td>${end}</td></tr>`;
+  }
   html += '</tbody></table>';
   wrapper.innerHTML = html;
 }
