@@ -241,3 +241,30 @@ date,indicator,value,units,laboratory_reference,laboratory
 2026-03-15,eosinophils,0.18,10^9/L,0.09 - 0.45,Synevo
 2026-03-15,basophils,0.07,10^9/L,< 0.11,Synevo
 2026-03-15,esr,32,mm/h,< 25,Synevo
+2026-04-27,hba1c,5.13,%,4.8 - 5.9,Synevo
+2026-04-27,ferritin,25.8,ng/ml,15 - 150,Synevo
+2026-04-27,vitamin_d_total,17.29,ng/ml,> 30,Synevo
+2026-04-27,wbc,11.4,10^9/L,4.4 - 11.3,Synevo
+2026-04-27,rbc,4.22,10^12/L,4.1 - 5.1,Synevo
+2026-04-27,hemoglobin,12.6,g/dL,11.7 - 16.2,Synevo
+2026-04-27,hematocrit,37.6,%,35 - 47,Synevo
+2026-04-27,mcv,89.1,fL,80 - 96,Synevo
+2026-04-27,mch,29.9,pg,28 - 33,Synevo
+2026-04-27,mchc,34,g/dL,33 - 36,Synevo
+2026-04-27,mpv,11.3,fL,6 - 11,Synevo
+2026-04-27,rdw_cv,14.4,%,11 - 16,Synevo
+2026-04-27,platelets,253,10^9/L,170 - 394,Synevo
+2026-04-27,neutrophils_pct,76,%,50 - 75,Synevo
+2026-04-27,lymphocytes_pct,14.9,%,25 - 40,Synevo
+2026-04-27,monocytes_pct,7,%,2 - 8,Synevo
+2026-04-27,basophils_pct,0.7,%,< 1,Synevo
+2026-04-27,eosinophils_pct,1.4,%,2 - 4,Synevo
+2026-04-27,lymphocytes,1.7,10^9/L,1.13 - 4.52,Synevo
+2026-04-27,neutrophils,8.66,10^9/L,2.25 - 7.91,Synevo
+2026-04-27,monocytes,0.8,10^9/L,0.09 - 1.04,Synevo
+2026-04-27,eosinophils,0.16,10^9/L,0.09 - 0.45,Synevo
+2026-04-27,basophils,0.08,10^9/L,< 0.11,Synevo
+2026-04-27,esr,41,mm/h,< 25,Synevo
+2026-04-27,calcium,9.25,mg/dL,8.6 - 10,Synevo
+2026-04-27,tsh,1.38,µU/mL,0.27 - 4.2,Synevo
+2026-04-27,free_t4,0.93,ng/dl,0.92 - 1.68,Synevo
