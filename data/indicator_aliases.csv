@@ -198,3 +198,23 @@ total_t4,tT4
 vitamin_d_total,Vitamin D Total
 vitamin_d_total,ვიტამინი D საერთო
 calcium,Calcium
+total_protein,Общий белок (ТР)
+albumin,Альбумин (ALB)
+total_bilirubin,Билирубин общий (TBil)
+alp,Щелочная фосфотаза (ALP)
+wbc,Лейкоциты (WBC)
+rbc,Эритроциты (RBC)
+hemoglobin,Гемоглобин (HGB)
+hematocrit,Гематокрит (HCT)
+mcv,Средний объем эритроцита (MCV)
+mch,Среднее содержание гемоглобина (MCH)
+mchc,Средняя концентрация гемоглобина (MCHC)
+rdw_cv,Ширина распределения эритроцитов (RDW)
+platelets,Тромбоциты (PLT)
+basophils,Базофилы (Baso) Abs
+eosinophils,Эозинофилы (Eos) Abs
+lymphocytes,Лимфоциты (Lym) Abs
+monocytes,Моноциты (Mono) Abs
+eosinophils_pct,Эозинофилы (Eos) %
+lymphocytes_pct,Лимфоциты (Lym) %
+monocytes_pct,Моноциты (Mono) %
